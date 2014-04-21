@@ -10,11 +10,6 @@ case_strength = 1;
 
 case_margin = 0.1;
 
-module round_corner()
-{
-
-}
-
 module mounting_plate()
 {
 	union()
