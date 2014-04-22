@@ -1,15 +1,20 @@
+#include <Wire.h> //I2C Arduino Library
+#include "SpiderMagnet.h"
+
+// Hardware for Onewire is on Pins 4 & 5 on Nano, Uno
+
 int number_of_outputs = 8;
 
 int out_n = 2;
 int out_no = 3;
-int out_o = 4;
-int out_so = 5;
-int out_s = 6;
-int out_sw = 7;
-int out_w = 8;
-int out_nw = 9;
+int out_o = 6;
+int out_so = 7;
+int out_s = 8;
+int out_sw = 9;
+int out_w = 10;
+int out_nw = 11;
 
-int all_outputs[] = {2, 3, 4, 5, 6, 7, 8, 9};
+int all_outputs[] = {2, 3, 4, 7, 8, 9, 10, 11};
 
 int current_direction = 0;
 int pin_angles[8];
@@ -19,7 +24,10 @@ int angle_epsilon = 10;
 void setup()
 {
   Serial.begin(9600);
-  
+  Wire.begin();
+
+  magnetSetup();
+
   for (int i=0; i<8; i++)
   {
     pinMode(all_outputs[i], OUTPUT);
@@ -90,6 +98,7 @@ void show_direction(int dir)
 void loop()
 {
   show_direction(current_direction);
+  magnetLoop();
   
   current_direction = (current_direction + 1) % 360;
   
