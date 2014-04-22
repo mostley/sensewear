@@ -6,7 +6,7 @@
 
 #define L883_ADDRESS 0x1E //0011110b, I2C 7bit address of HMC5883
 
-void magnetCalibrate()
+void compassCalibrate()
 {
   // the lazy way: 
   // Turn around for two full turns, gather min and max values for X and Y axis
@@ -16,10 +16,10 @@ void magnetCalibrate()
 }
 
 // Wrapper for all the magnet stuff we need. 
-class magnetL883
+class compassL883
 {
 public:
-  magnetL883();
+  compassL883();
   void printCoordToSerial();
 
 private: 
@@ -28,14 +28,14 @@ private:
   int scaleY;
   int scaleZ; 
 
-  // magnet readings are not centered on zero
+  // compass readings are not centered on zero
   // call calibrate() to calculate
   int centerX;
   int centerY;
   int centerZ;
 };
 
-magnetL883::magnetL883()
+compassL883::compassL883()
 {
   scaleX = 1160;
   scaleY = 1160;
@@ -55,7 +55,7 @@ magnetL883::magnetL883()
 }
 
 // for debug purposes
-void magnetL883::printCoordToSerial()
+void compassL883::printCoordToSerial()
 {
   int x,y,z; //triple axis data
 

@@ -21,14 +21,14 @@ int pin_angles[8];
 
 int angle_epsilon = 10;
 
-magnetL883* magnet;
+compassL883* compass;
 
 void setup()
 {
   Serial.begin(9600);
   Wire.begin();
 
-  magnet = new magnetL883();
+  compass = new compassL883();
 
   for (int i=0; i<8; i++)
   {
@@ -101,7 +101,7 @@ void loop()
 {
   show_direction(current_direction);
   
-  magnet->printCoordToSerial();
+  compass->printCoordToSerial();
   delay(500);
   
   current_direction = (current_direction + 1) % 360;
