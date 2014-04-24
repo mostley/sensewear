@@ -1,0 +1,21 @@
+
+[22.04.2014/darkwimp]
+For now, I have a HMC5883 magnetometer from GHI. 
+We are planning to use that chip, but on a different breakout in the future
+https://www.ghielectronics.com/catalog/product/323
+
+Pins:  
+ 1 3.3V
+ 3 INT
+ 8 I2C_SDA
+ 9 I2C_SCK
+10 GND
+
+Sparkfun tutorial for this chip: 
+https://www.sparkfun.com/tutorials/301
+
+Assumed orientation of chip: 
+Vertical Axis of body = X-Axis of chip
+Longitudinal Axis = Z-Axis of chip
+
+
